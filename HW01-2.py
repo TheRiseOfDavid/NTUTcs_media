@@ -17,5 +17,5 @@ cv2.rectangle(img, (100, 100), (132, 132), (194, 109, 165), 8)
 cv2.circle(img, (300, 100), 80, (118, 122, 27), 3)
 cv2.circle(img, (100, 300), 16, (135, 133, 255), -1)
 
-cv2.imshow("hello world", img)
-
+#cv2.imshow("hello world", img)
+cv2.imwrite("picture.jpg", img)

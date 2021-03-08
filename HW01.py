@@ -19,22 +19,26 @@ def re(img):
     # (x, y) is tuple
     img2 = cv2.resize(img, (w, h), \
                       interpolation = cv2.INTER_CUBIC )
-    cv2.imshow("donburi", img2) 
+    #cv2.imshow("donburi", img2) 
+    cv2.imwrite("./resize.jpg", img2)
     return img2
 
 def gray(img):
     img2 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)    
-    cv2.imshow("donburi_gray", img2)
+    #cv2.imshow("donburi_gray", img2)
+    cv2.imwrite("./gray.jpg", img2)
     return img2 
 
 def HSV(img):
     img2 = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-    cv2.imshow("donburi_HSV", img2)
+    #cv2.imshow("donburi_HSV", img2)
+    cv2.imwrite("./HSV.jpg", img2)
     return img2 
 
 def YcrCb(img):
     img2 = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
-    cv2.imshow("donburi_YcrCb", img2)
+    #cv2.imshow("donburi_YcrCb", img2)
+    cv2.imwrite("./YcrCb.jpg", img2)
     return img2 
 
 def RGBpass(img):
@@ -45,8 +49,8 @@ def RGBpass(img):
         
         img2 = np.zeros((h, w, 3), np.uint8)
         img2[:, :, i] = img[:, :, i]
-        cv2.imshow("look" + cname[i], img2)
-
+        #cv2.imshow("look" + cname[i], img2)
+        cv2.imwrite(cname[i] + ".jpg", img2)
 
 #gray
 img = re(img_old)
@@ -61,6 +65,6 @@ img = HSV(img)
 img = re(img_old)
 img = YcrCb(img)
 
-cv2.waitKey(0)
-cv2.destroyWindows()
+#cv2.waitKey(0)
+#cv2.destroyWindows()
 
