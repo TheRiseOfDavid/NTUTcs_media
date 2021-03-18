@@ -13,8 +13,6 @@ w = int(img_old.shape[1] * 0.5)
 h = int(img_old.shape[0] * 0.5)
 
 def re(img):
-
-    
     # resize 
     # (x, y) is tuple
     img2 = cv2.resize(img, (w, h), \
@@ -65,6 +63,5 @@ img = HSV(img)
 img = re(img_old)
 img = YcrCb(img)
 
-#cv2.waitKey(0)
-#cv2.destroyWindows()
-
+# cv2.waitKey(0)
+# cv2.destroyWindows()
