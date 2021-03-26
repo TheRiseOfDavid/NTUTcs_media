@@ -51,7 +51,6 @@ cv2.imshow("result", resize_f)
 cv2.imwrite("hw3_2.jpg", resize_f)
 
 cv2.waitKey(0)
-cv2.destroyWindow()
 
 # 困難：一開始不知道 hough line是偵測白色的部分，所以畫出來的線很多又雜。
 # 嘗試很久才發現要改為黑白相反，後來把二值化改為BINARY_INV就可以了。

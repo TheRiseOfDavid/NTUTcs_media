@@ -19,6 +19,8 @@ ret, thres_c = cv2.threshold(gray_c, 90, 255, cv2.THRESH_BINARY)
 erode_c = cv2.erode(thres_c, kernel, iterations=2)
 # 膨脹
 dilation_c = cv2.dilate(erode_c, kernel, iterations=1)
+
+
 # 連通物件 stats[x, y, h, w, area]
 num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(dilation_c, connectivity=8)
 count = 0
@@ -52,7 +54,7 @@ for i in range(num_labels):
 
 # print("count = ", count)        
 # cv2.imshow("erode", erode_c)
-# cv2.imshow("dilation", dilation_c)
+cv2.imshow("dilation", dilation_c)
 print("sum = ", sum)
 cv2.imshow("result", resize_c)
 cv2.imwrite("hw3_1.jpg", resize_c)
