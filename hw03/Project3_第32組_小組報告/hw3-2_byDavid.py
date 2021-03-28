@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread("../pic/floor.jpg")
+img = cv2.imread("./pic/floor.jpg")
 h, w, ch = img.shape
 w //= 5
 h //= 5

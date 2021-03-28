@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread("../pic/coin.jpg")
+img = cv2.imread("./pic/coin.jpg")
 h, w, ch = img.shape
 
 img = cv2.resize(img, (w//5, h//5), interpolation=cv2.INTER_NEAREST) #important

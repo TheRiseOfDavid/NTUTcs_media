@@ -8,8 +8,8 @@ Created on Thu Mar 25 11:28:28 2021
 import cv2
 import numpy as np
 
-a = cv2.imread("../pic/apple.jpg")
-b = cv2.imread("../pic/orange.jpg")
+a = cv2.imread("./pic/apple.jpg")
+b = cv2.imread("./pic/orange.jpg")
 
 gaussA = [a.copy()]
 gaussB = [b.copy()]
