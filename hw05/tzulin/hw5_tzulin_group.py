@@ -18,14 +18,14 @@ data_amount = 300
 lfw_people = fetch_lfw_people(min_faces_per_person=70, resize=0.4)
 image_people = lfw_people['images'][:data_amount]
 for p in range(len(image_people)):
-    image_people[p] = cv2.resize(image_people[p], (37, 50))
+    image_people[p] = image_people[p]
 
 # get car data
 car = list()
 for x in range(data_amount):
     img = cv2.imread('./car/%05d.jpg' % (x + 1))
     img = cv2.resize(img, (37, 50))
-    car.append(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY))
+    car.append(img)
 car = np.array(car)
 
 # let people's target is 0, car is 1
