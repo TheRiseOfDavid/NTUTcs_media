@@ -17,8 +17,6 @@ data_amount = 300
 # get people data
 lfw_people = fetch_lfw_people(min_faces_per_person=70, resize=0.4)
 image_people = lfw_people['images'][:data_amount]
-for p in range(len(image_people)):
-    image_people[p] = image_people[p]
 
 # get car data
 car = list()
