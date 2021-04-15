@@ -15,3 +15,5 @@ man4=cv2.bitwise_and(man2,img2)
 
 cv2.imshow("man",man4)
 cv2.waitKey(0)
+
+

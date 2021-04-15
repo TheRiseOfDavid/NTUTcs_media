@@ -24,6 +24,5 @@ def cat():
         
         cv2.imwrite("../resize_cat/cat_%.3d.jpg" % i, image)
 
-
 #dog()
 cat()
