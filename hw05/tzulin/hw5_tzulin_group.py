@@ -12,7 +12,7 @@ from sklearn.datasets import fetch_lfw_people
 from sklearn import svm
 from sklearn.model_selection import train_test_split
 
-data_amount = 100
+data_amount = 90
 
 # get dog data
 dog = list()
@@ -53,16 +53,43 @@ for image in images:
     hog_images.append(fd)
 
 # split some data to be the test data
-x_train, x_test, y_train, y_test = train_test_split(hog_images, target, test_size=0.2, random_state=0)
+#x_train, x_test, y_train, y_test = train_test_split(hog_images, target, test_size=0.2, random_state=0)
+
+
+test_images = list()
+for x in range(10):
+    img = cv2.imread('../resize_dog/dog_%03d.jpg' % (x + 91))
+    test_images.append(img)
+for x in range(10):
+    img = cv2.imread('../resize_cat/cat_%03d.jpg' % (x + 91))
+    test_images.append(img)
+    
+test_images = np.array(test_images)
+    
+test_hog = []
+for image in test_images:
+    fd, test_image = hog(
+        image,
+        orientations=8,
+        pixels_per_cell=(9, 9),
+        cells_per_block=(1, 1),
+        visualize=True,
+    )
+    test_hog.append(fd)
+    
+
+test_target = [0] * 10 + [1] * 10
+
 
 # svm train
 clf = svm.SVC(kernel="linear", C=1, gamma="auto")
-clf.fit(x_train, y_train)
-
+clf.fit(hog_images, target)
 
 print("accuracy")
-print("train:", clf.score(x_train, y_train))
-print("test:", clf.score(x_test, y_test), "\n")
+#print(hog_images[0])
+print("train:", clf.score(hog_images, target))
+#print(test_images[0])
+print("test:", clf.score(test_hog, test_target), "\n")
     
 #cv2.waitKey(0)
 #cv2.destroyWindow()
