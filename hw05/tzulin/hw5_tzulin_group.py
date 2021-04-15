@@ -12,30 +12,32 @@ from sklearn.datasets import fetch_lfw_people
 from sklearn import svm
 from sklearn.model_selection import train_test_split
 
-data_amount = 300
+data_amount = 100
 
-# get people data
-lfw_people = fetch_lfw_people(min_faces_per_person=70, resize=0.4)
-image_people = lfw_people['images'][:data_amount]
-
-# get car data
-car = list()
+# get dog data
+dog = list()
 for x in range(data_amount):
-    img = cv2.imread('./car/%05d.jpg' % (x + 1))
-    img = cv2.resize(img, (37, 50))
-    car.append(img)
-car = np.array(car)
+    img = cv2.imread('../resize_dog/dog_%03d.jpg' % (x + 1))
+    dog.append(img)
+dog = np.array(dog)
 
-# let people's target is 0, car is 1
-target_people = [0] * data_amount
-target_car = [1] * data_amount
-target = target_car + target_people
+# get cat data
+cat = list()
+for x in range(data_amount):
+    img = cv2.imread('../resize_cat/cat_%03d.jpg' % (x + 1))
+    cat.append(img)
+cat = np.array(cat)
 
-# put people and car images in images list
+# let dog's target is 0, cat's is 1
+target_dog = [0] * data_amount
+target_cat = [1] * data_amount
+target = target_dog + target_cat
+
+# put dog and cat images in images list
 images = list()
-for x in car:
+for x in dog:
     images.append(x)
-for x in image_people:
+for x in cat:
     images.append(x)
 
 # hog
