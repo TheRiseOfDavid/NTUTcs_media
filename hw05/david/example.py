@@ -2,8 +2,10 @@ from skimage.feature import hog
 from skimage import data, exposure
 import matplotlib.pyplot as plt
 from time import time
+import cv2
 
 image = data.astronaut()
+image = cv2.imread("./00003.jpg") 
 t0 = time()
 fd, hog_img = hog(image, orientations=8, pixels_per_cell=(16,16), 
               cells_per_block=(1,1), visualize=True, multichannel=True)
