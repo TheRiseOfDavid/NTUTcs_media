@@ -18,11 +18,11 @@ train_amount = 80
 test_amount = 20
 
 #return list
-dogs = hw06_fn.read("../resize_dog/dog_%.3d.jpg", data_amount)
-cats = hw06_fn.read("../resize_cat/cat_%.3d.jpg", data_amount)
+# dogs = hw06_fn.read("../resize_dog/dog_%.3d.jpg", data_amount)
+# cats = hw06_fn.read("../resize_cat/cat_%.3d.jpg", data_amount)
 
-#dogs = hw06_fn.read("../Doraemon/images (%d).jpg", data_amount)
-#cats = hw06_fn.read("../conan/images (%d).jpg", data_amount)
+dogs = hw06_fn.read("../Doraemon/images (%d).jpg", data_amount)
+cats = hw06_fn.read("../conan/images (%d).jpg", data_amount)
 
 sift_dogs = hw06_fn.sift(dogs)
 sift_cats = hw06_fn.sift(cats)
@@ -38,8 +38,7 @@ test_target = [0] * test_amount + [1] * test_amount
 clf = svm.SVC(kernel="linear", C=1, gamma="auto")
 clf.fit(train_features, train_target)
 
+print("doraemon and conan:")
 print("accuracy")
 print("train:", clf.score(train_features, train_target))
 print("test:", clf.score(test_features, test_target))
-
-
