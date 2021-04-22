@@ -4,6 +4,7 @@
 Created on Thu Apr 8 10:58:26 2021
 
 """
+#hog 比較容易受到外音干擾，旋轉光影也會干擾
 
 import cv2
 import numpy as np
@@ -18,21 +19,21 @@ test_amount = 20
 
 dogs = list()
 cats = list()
-#for i in range(1,data_amount+1):
-#  image = cv2.imread("../resize_dog/dog_%.3d.jpg" % i)
-#  dogs.append(image)
-#for i in range(1,data_amount+1):
-#  image = cv2.imread("../resize_cat/cat_%.3d.jpg" % i)  
-#  cats.append(image)
-
 for i in range(1,data_amount+1):
-  image = cv2.imread("../conan/images (%d).jpg" % i)
-  image = cv2.resize(image, (349,256))
+  image = cv2.imread("../resize_dog/dog_%.3d.jpg" % i)
   dogs.append(image)
 for i in range(1,data_amount+1):
-  image = cv2.imread("../Doraemon/images (%d).jpg" % i)  
-  image = cv2.resize(image, (349,256))
+  image = cv2.imread("../resize_cat/cat_%.3d.jpg" % i)  
   cats.append(image)
+
+#for i in range(1,data_amount+1):
+#  image = cv2.imread("../conan/images (%d).jpg" % i)
+#  image = cv2.resize(image, (349,256))
+#  dogs.append(image)
+#for i in range(1,data_amount+1):
+#  image = cv2.imread("../Doraemon/images (%d).jpg" % i)  
+#  image = cv2.resize(image, (349,256))
+#  cats.append(image)
 
 hog_dogs = list()
 hog_cats = list()
