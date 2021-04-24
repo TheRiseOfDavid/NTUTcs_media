@@ -33,9 +33,10 @@ def rename_image(folder, category):
     
     for old_name in images:
         new_name = "%s-%d.jpg" % (category, i)
-        if(not os.path.isfile(folder+new_name)):
-            os.rename(folder+old_name, folder+new_name)
-            print("修改當前檔案", old_name, new_name)
+        while (not os.path.isfile(folder+new_name)): 
+            i += 1
+        os.rename(folder+old_name, folder+new_name)
+        print("修改當前檔案", old_name, new_name)
         i += 1
 
 def read(path):
@@ -75,6 +76,9 @@ def kmeans_return_features(k, sift):
   for it in sift[1:]:
     descriptors = np.vstack((descriptors, it))  
   
+  print(len(descriptors))
+  if(len(descriptors) < k):
+    raise Exception("無法辨識，因為此圖片特徵數小於 k")
   voc, train_variance = kmeans(descriptors,k,1)
   
   #features histogram

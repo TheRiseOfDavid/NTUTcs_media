@@ -9,11 +9,12 @@ import joblib
 import hw07_fn
 from sklearn.decomposition import PCA
 import numpy as np
+import os
 
 def sift(image):
-    clf = joblib.load("./svc_paper_scissor_rock_gam   e.pkl") 
+    clf = joblib.load("./sift_paper_scissor_rock_game.pkl") 
     sift_image = hw07_fn.sift([image])
-    x = hw07_fn.kmeans_return_features(30, sift_image)
+    x = hw07_fn.kmeans_return_features(20, sift_image)
     predict = clf.predict(x)
     print("sift 辨識")
     print(predict)
@@ -32,22 +33,22 @@ def hog(image):
 #hw07_fn.rename_image("./game/", "image")p1 = hw07_fn.random_image("./game")
 
 p1 = hw07_fn.random_image("./game")
-cv2.imshow("player1", p1)
+#cv2.imshow("player1", p1)
 p2 = hw07_fn.random_image("./game")
-p2 = hw07_fn.random_image("./game")
-cv2.imshow("player1", p1)
+#cv2.imshow("player1", p1)
 
-#predict = sift(p1)
-predict1 = hog(p1)
-predict2 = hog(p2)
+predict1 = sift(p1) 
+predict2 = sift(p2) 
+
+#predict1 = hog(p1) 
+#predict2 = hog(p2)
 
 lose = cv2.imread("lose.jpg")
 lose = cv2.resize(lose, (400,313))
 win = cv2.imread("win.jpg")
-win = cv2.resize(lose, (400,313))
+win = cv2.resize(win, (400,313))
 tie = cv2.imread("tie.png")
 tie = cv2.resize(tie, (400,313))
-result = p1
 
 if(predict1 == "剪刀" and predict2 == "石頭"):
     result = np.hstack((p1,lose,p2))
