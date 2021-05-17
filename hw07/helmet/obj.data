@@ -1,0 +1,5 @@
+classes = 17
+train = /drive/yolo/helmet/train.txt
+valid = /drive/yolo/helmet/valid.txt
+names = /drive/yolo/helmet/obj.names
+backup = /drive/yolo/helmet/
