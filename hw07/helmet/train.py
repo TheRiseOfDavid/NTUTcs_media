@@ -16,3 +16,5 @@ with open("train.txt", "w") as output:
         output.write("\n")
     output.close()
 os.chdir("..")
+
+
